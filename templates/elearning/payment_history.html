@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment History</title>
+</head>
+<body>
+    <h1>Payment History</h1>
+    <ul>
+        {% for payment in payments %}
+            <li>${{ payment.amount }} - {{ payment.status }} ({{ payment.payment_date }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

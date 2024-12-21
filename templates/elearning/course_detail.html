@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ course.title }}</title>
+</head>
+<body>
+    <h1>{{ course.title }}</h1>
+    <p>{{ course.description }}</p>
+    <p>Price: ${{ course.price }}</p>
+    <p>Category: {{ course.category.name }}</p>
+    <p>Instructor: {{ course.instructor.username }}</p>
+
+    <h2>Lessons</h2>
+    <ul>
+        {% for lesson in lessons %}
+            <li>
+                <a href="{% url 'lesson_detail' lesson.id %}">
+                    {{ lesson.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_lesson' course.id %}">Add a Lesson</a>
+
+    <h2>Reviews</h2>
+    <ul>
+        {% for review in reviews %}
+            <li>
+                <strong>{{ review.user.username }}</strong>: {{ review.comment }} ({{ review.rating }}/5)
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_review' course.id %}">Add a Review</a>
+</body>
+</html>
